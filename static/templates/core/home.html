@@ -1,0 +1,51 @@
+{% extends '../index.html' %}
+{% load static %}
+
+{% block title %} home {% endblock %}
+
+
+{% block content %}
+
+
+<!-- CARUSEL -->
+
+{% include './carusel.html' %}
+
+<!--  END CARUSEL -->
+
+
+<hr>
+ <!-- Cartas -->
+
+ <div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">Animes</h2>
+    <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
+
+        <!-- primera carta -->
+          <div class="col">
+            <a href="{% url 'titulo' %}">
+                <div class="card p-2" style="  height: 20rem;" >       
+                    
+                  <div class="card-body w-100" 
+                  style=" background-size: cover; 
+                  background-image: url('{% static 'img/titulo/temporada/temporada.jpg' %}');">
+                  </div>
+                  
+
+                  <div class="card-footer px-3">
+                    <h6 class="text-muted"> Kimetsu no Yaiba: Yuukaku-hen </h6>
+                  </div>
+
+                </div>
+            </a>    
+          </div>
+    </div>   
+    <!-- end columnas -->
+
+
+
+
+  </div>
+
+
+{% endblock %}
