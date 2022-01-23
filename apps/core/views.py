@@ -18,6 +18,12 @@ def login(request):
 def titulo(request):
     return render(request, 'titulo/titulo.html')
 
+def franquicia(request):
+    return render(request, 'titulo/franquicia.html')
+
+def entrega(request):
+    return render(request, 'titulo/entrega.html')
+
 
 def staff(request):
     return render(request, 'titulo/staff.html')
