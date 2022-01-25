@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #"debug_toolbar",
     'comunidad',
     'core',
     'tags',
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    #"debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -96,6 +98,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'bluelist', #< == nombre de la base de datos creada en pgadmin
+#         'USER': 'postgres',
+#         'PASSWORD': 'angel',
+#         'HOST': 'localhost',
+#         'PORT': 5432,
+#     }
+# }
 
 
 # Password validation
@@ -147,3 +161,10 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+
+INTERNAL_IPS = [ ## debug
+    # ...
+    "127.0.0.1",
+    # ...
+]

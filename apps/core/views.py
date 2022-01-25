@@ -1,10 +1,13 @@
 from django.shortcuts import render
-
+from ..titulos.models import Titulo
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'core/home.html')
+    titulos = Titulo.objects.all()
+    ctx = {"titulos": titulos}
+
+    return render(request, 'core/home.html', ctx )
 
 
 def registro(request):
