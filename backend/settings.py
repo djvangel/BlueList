@@ -9,11 +9,16 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import imp
+import django_heroku        ## HEROKU DEPLOY
+import dj_database_url      ## HEROKU DEPLOY
 
 from pathlib import Path
 import sys
 import os
 import environ   #add this
+
+
 env = environ.Env(                #add this
     # set casting, default value
     DEBUG=(bool, False)         # add this
@@ -32,12 +37,13 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))      # Permite alojar las app
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #env('DEBUG') 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ env('ALLOWED_HOSTS') ]
 
 
 # Application definition
@@ -98,13 +104,13 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+DATABASES = {}
+# Usa la variable de entorno DATABASE_URL="esta"
+django_heroku.settings(locals())
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # DATABASES = {
 #     'default': {
@@ -161,12 +167,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-import os
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
 
 
 INTERNAL_IPS = [ ## debug

@@ -18,9 +18,11 @@
 - [ ] Agregar descripcion a los titulos
 - [ ] Agregar Franquicias 
 
+# Fase 1 
+
+## diseño de base de datos
 
 ## __Agrego Variables globales__
-
 ### 1.- archivo  `context_processors.py`
 [1](1)
 ```python
