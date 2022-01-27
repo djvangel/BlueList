@@ -3,317 +3,92 @@
 
 {% block title %} home {% endblock %}
 
-
-
-
-
 {% block content %}
 
+    <!-- HEADER -->
+    <header class="bg-dark">
+        <!-- Banner -->
+        <div class="position-relative overflow-hidden d-flex align-items-center" style="height: 60vh;width: 100%;">
+            <img src="{{ franquicia.banner }}" class="d-block w-100" alt="">
+        </div>
+        <!-- end Banner -->
 
-
-<!-- HEADER -->
-
-<div class="bg-light">
-
-    <!-- Baner -->
-    <div class="position-relative overflow-hidden d-flex align-items-center"
-    style="height: 60vh;width: 100%;"
-    >
-        <img src="{% static 'img/titulo/titulo1.jpg' %}" class="d-block w-100"  alt="">
-    </div>
-    <!-- Baner -->
-
-
-    <!-- descripcion -->
-    <div class="container">
-        
-        <!-- OCULTAR EN MD -->
-            <div class="row featurette d-flex align-items-center">
-                <div class="col-md-7 order-md-2">
-
-            <h4 class="featurette-heading text-muted"> Titulo </span></h4>
-                
-            <p class="lead text-muted ">
-                
-                Another featurette? Of course. More placeholder content
-                here to give you an idea of how this layout woul
-                work with some actual real-world content in place.
-            </p>
-
-            </div>
         <!-- descripcion -->
+        <div class="row mx-5 p-3    ">
 
+            <!-- Miniatura -->
+            <div class="col-12 col-md-3">
 
-        <!-- Miniatura -->
-        <!-- CAMBIAR TAMAÑO -->
-        <div class="col-md-3 order-md-1 d-flex justify-content-center "    
-        >
-                <img class="pb-5  img-fluid mx-auto" 
-                width="250" height="250" 
-                src="{% static 'img/titulo/titulo1.jpg' %}" 
-                />
-            
+                <div class="d-flex justify-content-end p-0 mb-5">
+                    <img class="img-fluid mx-auto" width="220" height="300" style=" 
+                    background-size: cover; 
+                    background-position: 50% 70%;
+                    background-image: url('{{franquicia.imagen}}');">
+                </div>
             </div>
-        <!-- Miniatura -->
+            <!-- Miniatura -->
 
-    </div>
+            <!-- OCULTAR EN MD -->
+            <div class="col-8 d-flex justify-content-start align-items-center ">
 
-    </div>
+                <div class="d-block">
 
+                    <h3 class=>{{ franquicia.nombre_franquicia }}</h3>
+
+                    <h1 class="featurette-heading"> {{ titulo.nombre_titulo }} </h1>
+                    {% if  franquicia.sinopsis %}
+                    <p class="lead"> {{ franquicia.sinopsis|safe }} </p>
+                    {% endif %}
+                
+                </div>
+                
+                
+            </div>
+            <!-- descripcion -->
+
+        </div>
+        <!-- end descripcion -->
+
+    </header>
     <!-- EDN HEADER -->
-</div>
-
-<!-- separador -->
-<div class="mx-3 bg-light ">
-    <hr>
-</div>
-<!-- separador -->
 
 
- 
-<div class="row d-flex justify-content-center"> <!-- row -->
-
-<!-- siderbar -->
-    <div class="col col-2 mx-0">
-        {% include './sidebar.html' %}
-
+    <div class="container px-4 py-5">
+        <h2 class=" border-bottom">Titulos de la franquicia</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 align-items-stretch g-4 py-2">
+    
+            <!-- primera carta -->
+    
+            {% for i in franquicia.titulos.all %}
+              <div class="col">
+                <a class="text-muted" href="{% url 'titulo' i.slug %}">
+    
+                    <div class="card p-1 border rounded " style="  height: 20rem;" >       
+    
+                      <div class="card-body w-100 border rounded " 
+                      style=" 
+                      background-size: cover; 
+                      background-position: 50% 50%;
+                      background-image: url('{{i.imagen1}}');">
+                      </div>                   
+                    </div>
+    
+                    <div class="card-footer px-3">
+                      <h6 class="text-muted">{{ i.nombre_titulo}}</h6>
+                    </div>
+                </a>    
+              </div>
+              {% endfor %}
+    
+    
+        </div>   
+        <!-- end columnas -->
+    
+    
+    
+    
     </div>
-
-<!-- end siderbar -->
-
-
-    <div class="col col-md-9 bg-white  ">
-
-        <div class="container">
-            
-            <!-- Personajes -->
-
-                    
-        <div class="container px-4 py-5">
-            <h2 class="pb-2 border-bottom">Animes</h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 align-items-stretch g-4 py-5">
-
-                <!-- primera carta -->
-                <div class="col">
-                    <a href="{% url 'titulo' %}">
-                        <div class="card p-2" style="  height: 20rem;" >       
-                            
-                        <div class="card-body w-100" 
-                        style=" background-size: cover; 
-                        background-image: url('{% static 'img/titulo/temporada/temporada.jpg' %}');">
-                        </div>
-                        
-
-                        <div class="card-footer px-3">
-                            <h6 class="text-muted"> Kimetsu no Yaiba: Yuukaku-hen </h6>
-                        </div>
-
-                        </div>
-                    </a>    
-                </div>
-            </div>   
-            <!-- end columnas -->
-
-
-
-
-
-
-
-
-
-
-
-            <div class="p-5">
-                <h4 class="text-muted border-bottom pb-2">personajes</h4>
-
-                <div class="row">
-                    <div class="col-3">
-                        
-                        <div class="d-flex text-muted pt-3">
-                                <a href="{% url 'staff' %}">
-                                <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                                width="50" height="50" />                  
-                                </a>
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            
-                                    <div class="d-flex justify-content-between">
-
-                                    <strong class="text-gray-dark">Full Name</strong>
-                                    
-                                     <a href="#">Follow</a>
-                                    </div>
-
-                                <span class="d-block">@username</span>
-                                </div>
-                            </div>
-
-
-                    </div>
-
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- End personajes -->
-
-
-            <!-- STAFF -->
-            <div class="p-5">
-                <h4 class="text-muted">Staff</h4>
-                <hr>
-                <div class="row">
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-3">
-                        <div class="d-flex text-muted pt-3">
-                            <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" 
-                            width="50" height="50" />                  
-                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-
-                                <strong class="text-gray-dark">Full Name</strong>
-                                <a href="#">Follow</a>
-                            </div>
-                            <span class="d-block">@username</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- End Staff -->
-
-
-            
-    </div>
-
-
-</div> <!-- End row -->
-
-
+    
+    
 
 {% endblock %}

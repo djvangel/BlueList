@@ -35,7 +35,8 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))      # Permite alojar las app
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG') 
+DEBUG = True #env('DEBUG') 
+
 ALLOWED_HOSTS = ['*']
 
 

@@ -1,5 +1,5 @@
 from ast import For
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from ..titulos.models import *
 from ..tags.models import Formato
 # Create your views here.
@@ -16,7 +16,9 @@ def home(request):
 #  variables globales
 def formato(request, formato):
     titulos = Titulo.objects.filter(formato = formato ).all()
-    ctx = {"titulos": titulos}
+    franquicias = Franquicia.objects.reverse()[:3]
+
+    ctx = {"titulos": titulos, "franquicias": franquicias}
     return render(request, 'core/home.html', ctx)
 
 
@@ -27,8 +29,8 @@ def titulo(request, slug_titulo):
     return render(request, 'titulo/titulo.html', ctx)
 
 
-def personaje(request, slug_personaje):
-    personaje = Personaje.objects.get(slug = slug_personaje )
+def personaje(request,slug_titulo , slug_personaje):
+    personaje = Personaje.objects.get(obra__slug = slug_titulo, slug = slug_personaje )
     ctx = {"personaje": personaje}
     return render(request, 'titulo/personaje.html', ctx)
 
@@ -39,12 +41,14 @@ def staff(request, slug_staff):
     return render(request, 'titulo/staff.html')
 
 
-def franquicia(request):
-    return render(request, 'titulo/franquicia.html')
+def franquicia(request, slug_franquicia):
+    franquicia = get_object_or_404(Franquicia, slug = slug_franquicia)
+    ctx = {"franquicia": franquicia}
+    return render(request, 'titulo/franquicia.html', ctx)
 
 
-def entrega(request, slug_titulo2, slug_entrega):
-    entrega = Entrega.objects.get( titulo__slug = slug_titulo,slug = slug_entrega )
+def entrega(request, slug_titulo, slug_entrega):
+    entrega = Entrega.objects.get( titulo__slug = slug_titulo ,slug = slug_entrega )
     ctx = {"entrega": entrega}
 
     return render(request, 'titulo/entrega.html', ctx)

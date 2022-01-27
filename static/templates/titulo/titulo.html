@@ -5,53 +5,55 @@
 
 {% block content %}
 
-    <!-- HEADER -->
-    <header class="bg-dark">
-        <!-- Banner -->
-        <div class="position-relative overflow-hidden d-flex align-items-center"
-        style="height: 60vh;width: 100%;"
-        >
-            <img src="{{ titulo.banner }}" class="d-block w-100"  alt="">
-        </div>
-        <!-- end Banner -->
+<!-- HEADER -->
+<header class="bg-dark">
+    <!-- Banner -->
+    <div class="position-relative overflow-hidden d-flex align-items-center" style="height: 60vh;width: 100%;">
+        <img src="{{ titulo.banner }}" class="d-block w-100" alt="">
+    </div>
+    <!-- end Banner -->
 
-        <!-- descripcion -->
-        <div class="row p-0 mx-5">
+    <!-- descripcion -->
+    <div class="row mx-5 p-3    ">
 
-            <!-- Miniatura -->
-                <div class="col-md-2 d-flex justify-content-center p-0 my-5" >
-                <img class="img-fluid mx-auto" 
-                width="220" height="300"
-                style=" 
+        <!-- Miniatura -->
+        <div class="col-12 col-md-3">
+
+            <div class="d-flex justify-content-end p-0 mb-5">
+                <img class="img-fluid mx-auto" width="220" height="300" style=" 
                 background-size: cover; 
                 background-position: 50% 70%;
-                background-image: url('{{titulo.imagen1}}');">  
-                     
-                </div>
-                
-              
-            <!-- Miniatura -->
-
-            
-            <!-- OCULTAR EN MD -->
-            <div class="col-md-7 order-md-2 m-3 d-flex align-items-center ">
-                <div class="featurette ">
-
-                    <h4 class="featurette-heading text-muted "> {{ titulo.nombre_titulo }} </span></h4>
-                        
-                    <p class="lead text-muted "> {{ titulo.descripcion }}                  
-                        
-                    </p>
-                    </div>
-
-                </div>
-            <!-- descripcion -->
-
+                background-image: url('{{titulo.imagen1}}');">
+            </div>
         </div>
-        <!-- end descripcion -->
+        <!-- Miniatura -->
 
-    </header>
-    <!-- EDN HEADER -->
+        <!-- OCULTAR EN MD -->
+        <div class="col-8 d-flex justify-content-start align-items-center ">
+
+            <div class="d-block">
+
+                <a href="{% url 'franquicia' titulo.franquicia.slug %}">
+
+                    <h3 class=>{{ titulo.franquicia.nombre_franquicia }}</h3>
+                </a>
+
+                <h1 class="featurette-heading"> {{ titulo.nombre_titulo }} </h1>
+                {% if  titulo.sinopsis %}
+                <p class="lead"> {{ titulo.sinopsis|safe }} </p>
+                {% endif %}
+            
+            </div>
+            
+            
+        </div>
+        <!-- descripcion -->
+
+    </div>
+    <!-- end descripcion -->
+
+</header>
+<!-- EDN HEADER -->
 
 
 <!-- separador -->
@@ -61,57 +63,50 @@
 <!-- separador -->
 
 
-    
-    <div class="row d-flex justify-content-center"> <!-- row -->
 
-        <!-- siderbar -->
-        <div class="col col-2 mx-0">
-            {% include '../sidebar.html' %}
-        </div>
-        <!-- end siderbar -->
+<div class="m-0 p-0 row d-flex justify-content-center">
+    <!-- row -->
+
+    <!-- siderbar -->
+    <div class="col col-2 mx-0">
+        {% include '../sidebar.html' %}
+    </div>
+    <!-- end siderbar -->
 
 
-        <!-- Contenido -->
-        <div class="col col-md-9 bg-dark  "> 
-           
-            <div class="container px-4 ">
+    <!-- Contenido -->
+    <div class="col col-md-9 bg-dark  ">
 
-            
-                
-                <!-- Personajes -->
-                <div class="p-5">
-                    <h4 class="text-muted">personajes</h4>
-                    <hr>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 align-items-stretch">
-                
-                        {% for i in titulo.personajes.all %}  
+        <div class="container px-4 ">
 
 
 
-                  
-                            <div class="card">
-                                <a href="{% url 'personaje' i.slug %}">
+            <!-- Personajes -->
+            <div class="p-5">
+                <h4 class=>personajes</h4>
+                <hr>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 align-items-stretch">
 
-                                    <div class="border m-2" 
-                                        style="                                    
+                    {% for i in titulo.personajes.all %}
+
+                    <div class="col p-3">
+
+                        <div class="card ">
+                            <a href="{% url 'personaje' titulo.slug i.slug %}">
+
+                                <div class="border m-2" style="                                    
                                             height: 2cm;                           
                                             width: 2cm;               
                                             background-size: cover; 
                                             background-position: 50%;
                                             background-image: url('{{ i.imagen }}');">
-                                    </div>   
-                                  <strong class="text-muted">{{i.nombre_personaje}}</strong>
+                                </div>
+                                <strong class=>{{i.nombre_personaje}}</strong>
+                            </a>
+                        </div>
+                    </div>
 
-
-                                </a>
-                              </div>
-                           
-                                   
-
-                 
-
-
-                        {% endfor %}
+                    {% endfor %}
 
 
                     <!-- sadas -->
@@ -122,140 +117,133 @@
                 <!-- STAFF -->
 
                 <!-- End Staff -->
-                </div>
-                            
-                <!-- Staff -->
-                <div class="p-5">
-                    <h4 class="text-muted">Staff</h4>
-                    <hr>
+            </div>
+
+            <!-- Staff -->
+            <div class="p-5">
+                <h4 class=>Staff</h4>
+                <hr>
 
 
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 align-items-stretch">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 align-items-stretch">
 
-                            {% for i in titulo.staff.all %}  
-                            <div class="col">
+                    {% for i in titulo.staff.all %}
 
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col">
-                                        <div class="card">
-                                            <a href="">
-                                                <div class="border m-2 d-flex justify-content-center" 
-                                                style="                                    
-                                                    height: 2cm;                           
-                                                    width: 2cm;               
-                                                    background-size: cover; 
-                                                    background-position: 50%;
-                                                    background-image: url('{{ i.imagen }}');">
-                                                    </div>   
-                                            <strong class="text-muted text-end">{{ i.nombre_staff }}</strong>
-                                            </a>
-                                        </div>
+                    <div class="col p-3">
 
-                                      
+                        <div class="card ">
+                            <a href="{% url 'personaje' titulo.slug i.slug %}">
 
-                                    </div>
-                                
+                                <div class="border m-2" style="                                    
+                                                height: 2cm;                           
+                                                width: 2cm;               
+                                                background-size: cover; 
+                                                background-position: 50%;
+                                                background-image: url('{{ i.imagen }}');">
                                 </div>
-
-
-                            </div>
-                            {% endfor %}
-
+                                <strong class=>{{ i.nombre_staff }}</strong>
+                            </a>
                         </div>
+                    </div>
+
+                    {% endfor %}
+
 
                 </div>
-                <!-- Staff -->
-        
 
-                <!-- Entregas -->
+            </div>
+            <!-- Staff -->
 
-                {% if titulo.entregas.all %}
-                <div class="m-5">
 
-                    <h4 class="text-muted">Lista de entregas</h4>
-                    <hr>
-    
-                        <div class="card m-5">
-            
-        
-                            <ol class="list-group list-group-numbered">
+            <!-- Entregas -->
 
-                                {% for i in titulo.entregas.all %}
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                        <div class="border m-2 d-flex justify-content-center" 
-                                        style="                                    
+            {% if titulo.entregas.all %}
+            <div class="m-5">
+
+                <h4 class=>Lista de entregas</h4>
+                <hr>
+
+                <div class="card m-5">
+
+
+                    <ol class="list-group list-group-numbered">
+
+                        {% for i in titulo.entregas.all %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="border m-2 d-flex justify-content-center" style="                                    
                                             height: 1cm;                           
                                             width: 1cm;               
                                             background-size: cover; 
                                             background-position: 50%;
                                             background-image: url('{{ i.imagen }}');">
-                                            </div>   
-                                        
-                                        <div class="ms-2 me-auto">
-                                            <a href="{% url 'entrega' titulo.slug i.slug %}">
-                                                
-                                                <div class="fw-bold">{{ i.nombre_entrega }}</div>
-                                                Content for list item
-                                            </a>
-                                        </div>
-                                    <p>
-                                        links disponibles: 
-                                        <span class="badge bg-primary rounded-pill"> {{ i.links.count }}</span>
-                                    </p>
-                                    </li>
-                                {% endfor%}
-                                
-                            </ol>
-                        </div>
-                </div>
-                <!-- End entregas -->
-                {% endif %}
+                            </div>
 
+                            <div class="ms-2 me-auto">
+                                <a href="{% url 'entrega' titulo.slug i.slug %}">
 
-                {% if titulo.links.all %}
-                <div class="container">            
-                    <div class="d-flex align-items-center p-3 my-3 text-white bg-dark rounded shadow-sm">        
-                        <h1 class="h6 mb-0 text-white lh-1">Links de la comunidad</h1>
-                    </div>
-                    <div class="card mb-5">
-        
-        
-        
-                      <ol class="list-group list-group-numbered">
-        
-        
-                        {% for i in titulo.links.all %}
-                        <li class="list-group-item d-flex justify-content-between align-items-start">                  
-                          <div class="ms-2 me-auto">
-                            <a target="_blank" href="{{ i.url }}">
-                              <div class="fw-bold"> link {{ i.id }}</div>
-                              {{ i.descripcion }}
-                            </a>
-                          </div>
-                         <p>
-                           votaciones: 
-                           <span class="badge bg-primary rounded-pill">14</span>
-                          </p>
+                                    <div class="fw-bold">{{ i.nombre_entrega }}</div>
+
+                                </a>
+                            </div>
+                            <p>
+                                links disponibles:
+                                <span class="badge bg-primary rounded-pill"> {{ i.links.count }}</span>
+                            </p>
                         </li>
-                        {% endfor %}              
-                      </ol>
-        
-                    </div>
-        
-                 
-                      
-                    
+                        {% endfor%}
+
+                    </ol>
+                </div>
+            </div>
+            <!-- End entregas -->
+            {% endif %}
+
+
+            {% if titulo.links.all %}
+            <div class="container">
+                <div class="d-flex align-items-center p-3 my-3bg-dark rounded shadow-sm">
+                    <h1 class="h6 mb-0lh-1">Links de la comunidad</h1>
+                </div>
+                <div class="card mb-5">
+
+
+
+                    <ol class="list-group list-group-numbered">
+
+
+                        {% for i in titulo.links.all %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto justify-content-between">
+                                <a target="_blank" href="{{ i.url }}">
+                                    <div class="fw-bold"> link {{ i.id }}</div>
+                                    <div>
+                                        {{ i.descripcion }}
+                                    </div>
+                                </a>
+                            </div>
+
+                            <p>
+                                votaciones:
+                                <span class="badge bg-primary rounded-pill"> 0</span>
+                            </p>
+                        </li>
+                        {% endfor %}
+                    </ol>
+
                 </div>
 
 
-                {% endif %}
 
-            </div> <!-- End row -->
+            </div>
 
-        </div>
-        <!-- End Contenido -->
+            {% endif %}
 
+        </div> <!-- End row -->
 
     </div>
+    <!-- End Contenido -->
+
+
+</div>
 
 {% endblock %}

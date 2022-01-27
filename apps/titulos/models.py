@@ -14,8 +14,8 @@ class Franquicia(models.Model): # one pice / vengadores / teoria del big bang
     sinopsis = models.TextField(blank=True , null=True) # Post foreikey
 
     # titulos = ForeignKey() 
-    #TAG
 
+    #TAGs
     genero = models.ManyToManyField(Genero, related_name='franquicia', blank=True)
 
     # MEDIA
@@ -36,7 +36,6 @@ class Franquicia(models.Model): # one pice / vengadores / teoria del big bang
     class Meta:
         ordering = ["id"]
 
-
 class Staff(models.Model):
     """ Todo tipo de personas que hacen parte para la creacion de el film, actores, directores etc
     un personaje puede ser interpretado por varios actores"""
@@ -56,8 +55,6 @@ class Staff(models.Model):
 
     def __str__(self):
         return self.nombre_staff
-
-    
 
 class Titulo(models.Model): # tempora 1 / live action / civil war / manga / comic
     """ Presentacion del universo o franquicia, manga, serie, liveaction, etc"""
