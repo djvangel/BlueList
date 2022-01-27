@@ -9,7 +9,7 @@
 
 <!-- CARUSEL -->
 
-{% include './carusel.html' %}
+{% include '../carusel.html' %}
 
 <!--  END CARUSEL -->
 
@@ -25,7 +25,7 @@
 
         {% for i in titulos %}
           <div class="col ">
-            <a class="text-muted" href="{% url 'franquicia' %}">
+            <a class="text-muted" href="{% url 'titulo' i.slug %}">
 
                 <div class="card p-1 border rounded " style="  height: 20rem;" >       
 

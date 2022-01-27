@@ -2,12 +2,13 @@
   <div class="container">
     
       <nav class="navbar navbar-dark bg-dark fixed-top justify-content-center">
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'home' %}">Home</a>
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="#">Product</a>
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="#">Product</a>
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="#">Product</a>
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="#">Product</a>
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="#">Product</a>
+        <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'home' %}"> Home </a>
+
+
+        {% for i in menu_categories %}
+        <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'formato' i.value %}">{{ i.value }}</a>
+        {% endfor %}
+
       </nav>
 
 

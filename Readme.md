@@ -15,3 +15,44 @@
 - [x] Pagina de capitulo
 - [x] estructura de base de datos
 - [x] Estructura de relaciones
+- [ ] Agregar descripcion a los titulos
+- [ ] Agregar Franquicias 
+
+
+## __Agrego Variables globales__
+
+### 1.- archivo  `context_processors.py`
+[1](1)
+```python
+from .models import Formato
+def menu_categories(request): 
+    categories = Formato
+    return {'menu_categories': categories} 
+
+```
+### 2.- Ahora puedo llamar `Formato` en cualquer componente
+
+la view de la correspondiente url:
+```python
+def formato(request, formato):
+    titulos = Titulo.objects.filter(formato = formato ).all()
+    ctx = {"titulos": titulos}
+    return render(request, 'core/home.html', ctx)
+
+```
+
+```html
+{% for i in menu_categories %}
+    <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'formato' i.value %}">{{ i.value }}</a>
+{% endfor %}
+```
+
+## Agrego todas las views
+
+
+
+
+
+
+
+**Mas adelante repetire este proseso con las variables que deseo usar en los deferentes componentes**

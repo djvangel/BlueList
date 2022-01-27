@@ -7,221 +7,59 @@
 
 {% block content %}
 
-
-
-
-<div class="bg-white">
-
-    <!-- Baner -->
-    <div class="position-relative overflow-hidden d-flex align-items-center bg-light "
-    style="height: 20vh;width: 100%;"
-    >
+<!-- Banner -->
+<header class="bg-light">
+  <div class="position-relative overflow-hidden d-flex align-items-center " style="height: 60vh;width: 100%;">
+    <!-- Miniatura -->
+    <div class="col-md-5 mx-4 mb-4 d-flex ">
+      <img class="img-fluid mx-auto " width="220" height="300" style=" 
+              background-size: cover; 
+              background-position: 50% 50%;
+              background-image: url('{{ personaje.imagen }}');">
     </div>
-    <!-- Baner -->
+    <!-- end Miniatura -->
+    <div class="col ">
 
+      <h4 class="featurette-heading text-muted ">nombre: <strong class="text-dark">{{ personaje.nombre_personaje }} </strong>  </h4>
 
-    
-    <div class="row featurette d-flex align-items-center justify-content-center p-0 m-0">
-        
-        
-        <!-- Miniatura -->
-        <!-- CAMBIAR TAMAÑO -->
-        <div class="col-md-3 order-md-1 d-flex justify-content-center"    
-        >
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-                width="250" height="250" 
-                src="{% static 'img/titulo/titulo1.jpg' %}" 
-                />            
-        </div>
-        <!-- Miniatura -->
+      {% if personaje.titulo_interprete1 %}
+      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete1 }} : <span class="text-dark"> {{personaje.selec_interprete1}} </span></h6>
+      {% endif %}
 
-        <!-- descripcion -->
-                <div class="col-md-7 order-md-2">
-
-                    <h4 class="featurette-heading text-muted"> Titulo </span></h4>
-                    
-                    <p class="lead text-muted ">                        
-                        Another featurette? Of course. More placeholder content
-                        here to give you an idea of how this layout woul
-                        work with some actual real-world content in place.
-                    </p>
-
-                </div>
-        <!-- descripcion -->
-
-
-
-    </div>
-
-
-    <!-- EDN HEADER -->
-</div>
-
-<hr>
-
-
-<div class="container">
-
-
-    <!-- CARDS -->
-
-<div class="container px-4 py-5" id="custom-cards">
-  <h2 class="pb-2 border-bottom">Animes</h2>
-
-  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-
-    
-    
-    <div class="col">
-      <a href="{% url 'titulo' %}">
-      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
-        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
-          <ul class="d-flex list-unstyled mt-auto">
-            <li class="me-auto">
-              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-            </li>
-            <li class="d-flex align-items-center me-3">
-              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-              <small>Earth</small>
-            </li>
-            <li class="d-flex align-items-center">
-              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-              <small>3d</small>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </a>
-    </div>
-
-
-
-    <div class="col">
-      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
-          <ul class="d-flex list-unstyled mt-auto">
-            <li class="me-auto">
-              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-            </li>
-            <li class="d-flex align-items-center me-3">
-              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-              <small>Pakistan</small>
-            </li>
-            <li class="d-flex align-items-center">
-              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-              <small>4d</small>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
-          <ul class="d-flex list-unstyled mt-auto">
-            <li class="me-auto">
-              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-            </li>
-            <li class="d-flex align-items-center me-3">
-              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-              <small>California</small>
-            </li>
-            <li class="d-flex align-items-center">
-              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-              <small>5d</small>
-            </li>
-          </ul>
-        </div>
-      </div>
+      {% if personaje.titulo_interprete2 %}
+      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete2 }} : <span class="text-dark"> {{personaje.selec_interprete2}} </span></h6>
+      {% endif %}
+      
+      
+      {% if personaje.titulo_interprete3 %}
+      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete3 }} : <span class="text-dark"> {{personaje.selec_interprete3}} </span></h6>
+      {% endif %}
+      
     </div>
   </div>
-</div>
-
-
-</div>
-
-
-<div class="container px-4 py-5" id="custom-cards">
-<h2 class="pb-2 border-bottom">Peliculas</h2>
-
-<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+  <!-- end Banner -->
+</header>
+<!-- EDN HEADER -->
 
 
 
-<div class="col">
-  <a href="{% url 'titulo' %}">
-  <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
-    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-      <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
-      <ul class="d-flex list-unstyled mt-auto">
-        <li class="me-auto">
-          <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-        </li>
-        <li class="d-flex align-items-center me-3">
-          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-          <small>Earth</small>
-        </li>
-        <li class="d-flex align-items-center">
-          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-          <small>3d</small>
-        </li>
-      </ul>
-    </div>
+
+<div class="container mt-5 bg-light">
+  <div class="article">
+    {{ personaje.bio|safe }}
   </div>
-</a>
-</div>
 
 
 
-<div class="col">
-  <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-      <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
-      <ul class="d-flex list-unstyled mt-auto">
-        <li class="me-auto">
-          <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-        </li>
-        <li class="d-flex align-items-center me-3">
-          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-          <small>Pakistan</small>
-        </li>
-        <li class="d-flex align-items-center">
-          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-          <small>4d</small>
-        </li>
-      </ul>
+  
+  <div class="article mt-5">
+    <div class="d-flex align-items-center justify-content-center p-3 my-3 text-white bg-dark rounded shadow-sm">        
+      <h1 class="h1 mb-0 text-white text-center lh-1">Links de interés:</h1>
     </div>
+    {{ personaje.bio|safe }}
   </div>
-</div>
 
-<div class="col">
-  <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-      <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
-      <ul class="d-flex list-unstyled mt-auto">
-        <li class="me-auto">
-          <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-        </li>
-        <li class="d-flex align-items-center me-3">
-          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-          <small>California</small>
-        </li>
-        <li class="d-flex align-items-center">
-          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-          <small>5d</small>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>
-</div>
-</div>
-
-
 
 
 

@@ -14,4 +14,4 @@ class Links_comunidad(models.Model): # aporte de la comunidad
     
 
     def __str__(self):
-        return " link " + str(self.entrega) + " " + str(self.id) 
+        return " link " + str(self.entrega), str(self.titulo) + " " + str(self.id) 

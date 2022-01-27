@@ -26,7 +26,7 @@ class Estado(models.TextChoices): #TAG Titulo
 class Formato(models.TextChoices):#TAG Titulo
     ANIME = "Anime"
     MANGA = "manga"
-    PELICULA = "película"
+    PELICULA = "pelicula"
     TVSHOW = "TVshow"
     SERIE = "serie"
 
