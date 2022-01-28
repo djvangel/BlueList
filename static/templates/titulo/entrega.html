@@ -13,113 +13,108 @@
 
 <!-- HEADER -->
 
-    <div class="bg-light">
+<div class="bg-light">
 
-    <!-- Baner -->
-    <div class="position-relative overflow-hidden d-flex align-items-center"
-    style="height: 60vh;width: 100%;"
-    >
-        <img src="{% static 'img/titulo/titulo1.jpg' %}" class="d-block w-100"  alt="">
+  <!-- Baner -->
+  <div class="position-relative overflow-hidden d-flex align-items-center" style="height: 60vh;width: 100%;">
+    <img src="{% static 'img/titulo/titulo1.jpg' %}" class="d-block w-100" alt="">
+  </div>
+  <!-- Baner -->
+
+
+  <!-- descripcion -->
+  <div class="row">
+
+    <!-- Miniatura -->
+    <!-- CAMBIAR TAMAÑO -->
+    <div class="col-md-4 order-md-1 d-flex justify-content-center p-0">
+      <img class="p-3 img-fluid mx-auto" width="250" height="250" src="{% static 'img/titulo/titulo1.jpg' %}" />
     </div>
-    <!-- Baner -->
+    <!-- Miniatura -->
 
 
+    <!-- OCULTAR EN MD -->
+    <div class="col-md-7 order-md-2 m-3 d-flex align-items-center ">
+      <div class="featurette ">
+
+        <h4 class="featurette-heading text-muted "> {{ entrega.nombre_entrega }} </span></h4>
+
+        <p class="lead text-muted ">
+          {{ entrega.sinopsis }}
+        </p>
+      </div>
+
+    </div>
     <!-- descripcion -->
-    <div class="row">
-
-        <!-- Miniatura -->
-        <!-- CAMBIAR TAMAÑO -->
-        <div class="col-md-4 order-md-1 d-flex justify-content-center p-0"    
-        >
-                <img class="p-3 img-fluid mx-auto" 
-                width="250" height="250" 
-                src="{% static 'img/titulo/titulo1.jpg' %}" 
-                />            
-        </div>
-        <!-- Miniatura -->
-
-        
-        <!-- OCULTAR EN MD -->
-        <div class="col-md-7 order-md-2 m-3 d-flex align-items-center ">
-            <div class="featurette ">
-
-                <h4 class="featurette-heading text-muted "> {{ entrega.nombre_entrega }} </span></h4>
-                    
-                <p class="lead text-muted ">                    
-                    {{ entrega.sinopsis }}
-                </p>
-                </div>
-
-            </div>
-        <!-- descripcion -->
 
 
 
 
-    </div>
+  </div>
 
-    </div>
+</div>
 
-    <!-- EDN HEADER -->
+<!-- EDN HEADER -->
 </div>
 
 <!-- separador -->
 <div class="mx-3 bg-light ">
-    <hr>
+  <hr>
 </div>
 <!-- separador -->
 
 
- 
-<div class="row d-flex justify-content-center"> <!-- row -->
 
-<!-- siderbar -->
-    <div class="col col-2 mx-0">
-        
-      {% include '../sidebar.html' %}
+<div class="row d-flex justify-content-center">
+  <!-- row -->
+
+  <!-- siderbar -->
+  <div class="col col-2 mx-0">
+
+    {% include '../sidebar.html' %}
+
+  </div>
+
+  <!-- end siderbar -->
+
+
+  <div class="col col-md-9 bg-white  ">
+    <div class="container">
+      <div class="d-flex align-items-center p-3 my-3 text-white bg-dark rounded shadow-sm">
+
+        <h1 class="h6 mb-0 text-white lh-1">Links de la comunidad</h1>
+      </div>
+      <div class="card mb-5">
+
+
+
+        <ol class="list-group list-group-numbered">
+
+
+          {% for i in entrega.links.all %}
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <a target="_blank" href="{{ i.url }}">
+                <div class="fw-bold"> link {{ i.id }}</div>
+                {{ i.descripcion }}
+              </a>
+            </div>
+            <p>
+              votaciones:
+              <span class="badge bg-primary rounded-pill">14</span>
+            </p>
+          </li>
+          {% endfor %}
+        </ol>
+
+      </div>
+
+
+
 
     </div>
-
-<!-- end siderbar -->
-
-
-    <div class="col col-md-9 bg-white  ">
-        <div class="container">            
-            <div class="d-flex align-items-center p-3 my-3 text-white bg-dark rounded shadow-sm">
-
-                <h1 class="h6 mb-0 text-white lh-1">Links de la comunidad</h1>
-            </div>
-            <div class="card mb-5">
+  </div> <!-- End row -->
 
 
 
-              <ol class="list-group list-group-numbered">
-
-
-                {% for i in entrega.links.all %}
-                <li class="list-group-item d-flex justify-content-between align-items-start">                  
-                  <div class="ms-2 me-auto">
-                    <a target="_blank" href="{{ i.url }}">
-                      <div class="fw-bold"> link {{ i.id }}</div>
-                      {{ i.descripcion }}
-                    </a>
-                  </div>
-                 <p>
-                   votaciones: 
-                   <span class="badge bg-primary rounded-pill">14</span>
-                  </p>
-                </li>
-                {% endfor %}              
-              </ol>
-
-            </div>
-
-         
-              
-            
-        </div>
-    </div> <!-- End row -->
-
-
-
-{% endblock %}
+  {% endblock %}

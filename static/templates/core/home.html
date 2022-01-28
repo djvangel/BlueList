@@ -15,47 +15,46 @@
 
 
 <hr>
- <!-- Cartas -->
+<!-- Cartas -->
 
- <div class="container px-4 py-5">
-    <h2 class="pb-2 border-bottom">Animes</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 align-items-stretch g-4 py-5">
+<div class="container px-4 py-5">
+  <h2 class="pb-2 border-bottom">Animes</h2>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 align-items-stretch g-4 py-5">
 
-        <!-- primera carta -->
+    <!-- primera carta -->
 
-        {% for i in titulos %}
-          <div class="col ">
-            <a class="text-muted" href="{% url 'titulo' i.slug %}">
+    {% for i in titulos %}
+    <div class="col ">
+      <a class="text-muted" href="{% url 'titulo' i.slug %}">
 
-                <div class="card p-1 border rounded " style="  height: 20rem;" >       
+        <div class="card p-1 border rounded " style="  height: 20rem;">
 
-                  <div class="card-body w-100 border rounded " 
-                  style=" 
+          <div class="card-body w-100 border rounded " style=" 
                   background-size: cover; 
                   background-position: 50% 50%;
                   background-image: url('{{i.imagen1}}');">
-                  </div>                   
-                </div>
-
-                <div class="card-footer px-3">
-                  <p class="d-flex">
-
-                    <strong class="h6">{{ i.nombre_titulo}}  <span>|{{ i.formato}}</span></strong>
-                    
-                  </p>
-                </div>
-            </a>    
           </div>
-          {% endfor %}
+        </div>
 
+        <div class="card-footer px-3">
+          <p class="d-flex">
 
-    </div>   
-    <!-- end columnas -->
+            <strong class="h6">{{ i.nombre_titulo}} <span>|{{ i.formato}}</span></strong>
 
-
+          </p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
 
 
   </div>
+  <!-- end columnas -->
+
+
+
+
+</div>
 
 
 {% endblock %}

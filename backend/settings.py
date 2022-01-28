@@ -9,17 +9,16 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import imp
-import django_heroku        ## HEROKU DEPLOY
-import dj_database_url      ## HEROKU DEPLOY
+import django_heroku  # HEROKU DEPLOY
+import dj_database_url  # HEROKU DEPLOY
 
 from pathlib import Path
 import sys
 import os
-import environ   #add this
+import environ  # add this
 
 
-env = environ.Env(                #add this
+env = environ.Env(  # add this
     # set casting, default value
     DEBUG=(bool, False)         # add this
 )
@@ -32,7 +31,6 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))  # variables de entorno
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))      # Permite alojar las apps en una carpeta
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -41,9 +39,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))      # Permite alojar las app
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #env('DEBUG') 
+DEBUG = True  # env('DEBUG')
 
-ALLOWED_HOSTS = [ env('ALLOWED_HOSTS') ]
+ALLOWED_HOSTS = [env('ALLOWED_HOSTS')]
 
 
 # Application definition
@@ -55,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #"debug_toolbar",
+    # "debug_toolbar",
     'comunidad',
     'core',
     'tags',
@@ -67,13 +65,12 @@ INSTALLED_APPS = [
 INSTALLED_APPS += ('django_summernote', )
 
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    #"debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -84,7 +81,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR , 'static/templates'], 
+        'DIRS': [BASE_DIR, 'static/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,7 +89,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'apps.tags.context_processors.menu_categories', # Context
+                'apps.tags.context_processors.menu_categories',  # Context
             ],
         },
     },
@@ -166,7 +163,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -178,11 +174,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
-
-
-INTERNAL_IPS = [ ## debug
+INTERNAL_IPS = [  # debug
     # ...
     "127.0.0.1",
     # ...
 ]
-

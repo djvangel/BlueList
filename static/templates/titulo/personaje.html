@@ -20,21 +20,25 @@
     <!-- end Miniatura -->
     <div class="col ">
 
-      <h4 class="featurette-heading text-muted ">nombre: <strong class="text-dark">{{ personaje.nombre_personaje }} </strong>  </h4>
+      <h4 class="featurette-heading text-muted ">nombre: <strong class="text-dark">{{ personaje.nombre_personaje }}
+        </strong> </h4>
 
       {% if personaje.titulo_interprete1 %}
-      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete1 }} : <span class="text-dark"> {{personaje.selec_interprete1}} </span></h6>
+      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete1 }} : <span class="text-dark">
+          {{personaje.selec_interprete1}} </span></h6>
       {% endif %}
 
       {% if personaje.titulo_interprete2 %}
-      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete2 }} : <span class="text-dark"> {{personaje.selec_interprete2}} </span></h6>
+      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete2 }} : <span class="text-dark">
+          {{personaje.selec_interprete2}} </span></h6>
       {% endif %}
-      
-      
+
+
       {% if personaje.titulo_interprete3 %}
-      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete3 }} : <span class="text-dark"> {{personaje.selec_interprete3}} </span></h6>
+      <h6 class="featurette-heading text-muted "> {{ personaje.titulo_interprete3 }} : <span class="text-dark">
+          {{personaje.selec_interprete3}} </span></h6>
       {% endif %}
-      
+
     </div>
   </div>
   <!-- end Banner -->
@@ -51,9 +55,9 @@
 
 
 
-  
+
   <div class="article mt-5">
-    <div class="d-flex align-items-center justify-content-center p-3 my-3 text-white bg-dark rounded shadow-sm">        
+    <div class="d-flex align-items-center justify-content-center p-3 my-3 text-white bg-dark rounded shadow-sm">
       <h1 class="h1 mb-0 text-white text-center lh-1">Links de interés:</h1>
     </div>
     {{ personaje.bio|safe }}

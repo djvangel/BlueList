@@ -5,90 +5,89 @@
 
 {% block content %}
 
-    <!-- HEADER -->
-    <header class="bg-dark">
-        <!-- Banner -->
-        <div class="position-relative overflow-hidden d-flex align-items-center" style="height: 60vh;width: 100%;">
-            <img src="{{ franquicia.banner }}" class="d-block w-100" alt="">
-        </div>
-        <!-- end Banner -->
+<!-- HEADER -->
+<header class="bg-dark">
+    <!-- Banner -->
+    <div class="position-relative overflow-hidden d-flex align-items-center" style="height: 60vh;width: 100%;">
+        <img src="{{ franquicia.banner }}" class="d-block w-100" alt="">
+    </div>
+    <!-- end Banner -->
 
-        <!-- descripcion -->
-        <div class="row mx-5 p-3    ">
+    <!-- descripcion -->
+    <div class="row mx-5 p-3    ">
 
-            <!-- Miniatura -->
-            <div class="col-12 col-md-3">
+        <!-- Miniatura -->
+        <div class="col-12 col-md-3">
 
-                <div class="d-flex justify-content-end p-0 mb-5">
-                    <img class="img-fluid mx-auto" width="220" height="300" style=" 
+            <div class="d-flex justify-content-end p-0 mb-5">
+                <img class="img-fluid mx-auto" width="220" height="300" style=" 
                     background-size: cover; 
                     background-position: 50% 70%;
                     background-image: url('{{franquicia.imagen}}');">
-                </div>
             </div>
-            <!-- Miniatura -->
+        </div>
+        <!-- Miniatura -->
 
-            <!-- OCULTAR EN MD -->
-            <div class="col-8 d-flex justify-content-start align-items-center ">
+        <!-- OCULTAR EN MD -->
+        <div class="col-8 d-flex justify-content-start align-items-center ">
 
-                <div class="d-block">
+            <div class="d-block">
 
-                    <h3 class=>{{ franquicia.nombre_franquicia }}</h3>
+                <h3 class=>{{ franquicia.nombre_franquicia }}</h3>
 
-                    <h1 class="featurette-heading"> {{ titulo.nombre_titulo }} </h1>
-                    {% if  franquicia.sinopsis %}
-                    <p class="lead"> {{ franquicia.sinopsis|safe }} </p>
-                    {% endif %}
-                
-                </div>
-                
-                
+                <h1 class="featurette-heading"> {{ titulo.nombre_titulo }} </h1>
+                {% if franquicia.sinopsis %}
+                <p class="lead"> {{ franquicia.sinopsis|safe }} </p>
+                {% endif %}
+
             </div>
-            <!-- descripcion -->
+
 
         </div>
-        <!-- end descripcion -->
+        <!-- descripcion -->
 
-    </header>
-    <!-- EDN HEADER -->
+    </div>
+    <!-- end descripcion -->
+
+</header>
+<!-- EDN HEADER -->
 
 
-    <div class="container px-4 py-5">
-        <h2 class=" border-bottom">Titulos de la franquicia</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 align-items-stretch g-4 py-2">
-    
-            <!-- primera carta -->
-    
-            {% for i in franquicia.titulos.all %}
-              <div class="col">
-                <a class="text-muted" href="{% url 'titulo' i.slug %}">
-    
-                    <div class="card p-1 border rounded " style="  height: 20rem;" >       
-    
-                      <div class="card-body w-100 border rounded " 
-                      style=" 
+<div class="container px-4 py-5">
+    <h2 class=" border-bottom">Titulos de la franquicia</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 align-items-stretch g-4 py-2">
+
+        <!-- primera carta -->
+
+        {% for i in franquicia.titulos.all %}
+        <div class="col">
+            <a class="text-muted" href="{% url 'titulo' i.slug %}">
+
+                <div class="card p-1 border rounded " style="  height: 20rem;">
+
+                    <div class="card-body w-100 border rounded " style=" 
                       background-size: cover; 
                       background-position: 50% 50%;
                       background-image: url('{{i.imagen1}}');">
-                      </div>                   
                     </div>
-    
-                    <div class="card-footer px-3">
-                      <h6 class="text-muted">{{ i.nombre_titulo}}</h6>
-                    </div>
-                </a>    
-              </div>
-              {% endfor %}
-    
-    
-        </div>   
-        <!-- end columnas -->
-    
-    
-    
-    
+                </div>
+
+                <div class="card-footer px-3">
+                    <h6 class="text-muted">{{ i.nombre_titulo}}</h6>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+
     </div>
-    
-    
+    <!-- end columnas -->
+
+
+
+
+</div>
+
+
 
 {% endblock %}

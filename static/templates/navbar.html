@@ -1,29 +1,30 @@
 <header class="p-2 pt-5 bg-dark text-white">
   <div class="container">
-    
-      <nav class="navbar navbar-dark bg-dark fixed-top justify-content-center">
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'home' %}"> Home </a>
+
+    <nav class="navbar navbar-dark bg-dark fixed-top justify-content-center">
+      <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'home' %}"> Home </a>
 
 
-        {% for i in menu_categories %}
-        <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'formato' i.value %}">{{ i.value }}</a>
-        {% endfor %}
-
-      </nav>
+      {% for i in menu_categories %}
+      <a class="m-2 btn btn-sm btn-outline-secondary" href="{% url 'formato' i.value %}">{{ i.value }}</a>
+      {% endfor %}
 
 
-      
+    </nav>
 
-      <div class="d-flex align-items-center justify-content-between mt-3 pt-2 border-top">    
-        <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
 
-        <div class="col-lg-auto">
-          <a type="button" href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
-          <a type="button" href="{% url 'registro' %}" class="btn btn-warning">Sign-up</a>
-        </div>
-     </div>
+
+
+    <div class="d-flex align-items-center justify-content-between mt-3 pt-2 border-top">
+      <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+      </form>
+
+      <div class="col-lg-auto">
+        <a type="button" href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+        <a type="button" href="{% url 'registro' %}" class="btn btn-warning">Sign-up</a>
+      </div>
+    </div>
 
 
   </div>
