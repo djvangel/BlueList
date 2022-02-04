@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from ..titulos.models import Entrega, Titulo
+from apps.titulos.models import Entrega, Titulo
 
 
 class Links_comunidad(models.Model):  # aporte de la comunidad

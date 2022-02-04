@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Franquicia, Titulo, Personaje, Staff, Entrega
+from .models import Franquicia, Titulo, Personaje, Entrega
 # Register your models here.
 
 from django_summernote.admin import SummernoteModelAdmin
@@ -14,5 +14,4 @@ class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
 admin.site.register(Franquicia, SomeModelAdmin)
 admin.site.register(Titulo, SomeModelAdmin)
 admin.site.register(Personaje, SomeModelAdmin)
-admin.site.register(Staff, SomeModelAdmin)
 admin.site.register(Entrega, SomeModelAdmin)

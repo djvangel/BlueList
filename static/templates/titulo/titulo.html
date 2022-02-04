@@ -119,40 +119,6 @@
                 <!-- End Staff -->
             </div>
 
-            <!-- Staff -->
-            <div class="p-5">
-                <h4 class=>Staff</h4>
-                <hr>
-
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 align-items-stretch">
-
-                    {% for i in titulo.staff.all %}
-
-                    <div class="col p-3">
-
-                        <div class="card ">
-                            <a href="{% url 'personaje' titulo.slug i.slug %}">
-
-                                <div class="border m-2" style="                                    
-                                                height: 2cm;                           
-                                                width: 2cm;               
-                                                background-size: cover; 
-                                                background-position: 50%;
-                                                background-image: url('{{ i.imagen }}');">
-                                </div>
-                                <strong class=>{{ i.nombre_staff }}</strong>
-                            </a>
-                        </div>
-                    </div>
-
-                    {% endfor %}
-
-
-                </div>
-
-            </div>
-            <!-- Staff -->
 
 
             <!-- Entregas -->
@@ -186,7 +152,7 @@
                                 </a>
                             </div>
                             <p>
-                                links disponibles:
+                                Aportes disponibles:
                                 <span class="badge bg-primary rounded-pill"> {{ i.links.count }}</span>
                             </p>
                         </li>
@@ -202,7 +168,7 @@
             {% if titulo.links.all %}
             <div class="container">
                 <div class="d-flex align-items-center p-3 my-3bg-dark rounded shadow-sm">
-                    <h1 class="h6 mb-0lh-1">Links de la comunidad</h1>
+                    <h1 class="h6 mb-0lh-1">Aportes de la comunidad</h1>
                 </div>
                 <div class="card mb-5">
 

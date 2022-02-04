@@ -36,28 +36,6 @@ class Franquicia(models.Model):  # one pice / vengadores / teoria del big bang
         ordering = ["id"]
 
 
-class Staff(models.Model):
-    """ Todo tipo de personas que hacen parte para la creacion de el film, actores, directores etc
-    un personaje puede ser interpretado por varios actores"""
-
-    nombre_staff = models.CharField(max_length=255)
-    cargo = models.CharField(max_length=255)
-    bio = models.TextField(blank=True, null=True)
-    links = models.TextField(blank=True, null=True)  # redes sociales, otros trabajos / links a Staff en otra instancia
-    imagen = models.URLField(blank=True, null=True)
-    # titulo: donde trabajó
-    # personaje: que interpreta o encarna:
-
-    slug = models.SlugField(max_length=255, blank=True)
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.nombre_staff)
-        super(Staff, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.nombre_staff
-
-
 class Titulo(models.Model):  # tempora 1 / live action / civil war / manga / comic
     """ Presentacion del universo o franquicia, manga, serie, liveaction, etc"""
 
@@ -74,14 +52,13 @@ class Titulo(models.Model):  # tempora 1 / live action / civil war / manga / com
 
     # foreingkey
     franquicia = models.ForeignKey(Franquicia, related_name='titulos', on_delete=models.CASCADE, null=True, blank=True)
-    staff = models.ManyToManyField(Staff, related_name='staff', blank=True)
+   
     # Personajes
     # entregas
     # comentarios
 
     """ MEDIA """
-    imagen1 = models.URLField(blank=True, null=True)
-    imagen2 = models.URLField(blank=True, null=True)
+    imagen = models.URLField(blank=True, null=True)
     banner = models.URLField(blank=True, null=True)
     clip = models.URLField(blank=True, null=True)
 
@@ -109,18 +86,6 @@ class Personaje(models.Model):
 
     # Titulo donde aparece  // si borran ese titulo desaparese este personaje
     obra = models.ManyToManyField(Titulo, related_name='personajes', blank=True)
-
-    titulo_interprete1 = models.CharField(blank=True, null=True, max_length=255)
-    selec_interprete1 = models.ForeignKey(Staff, related_name='personajes1',
-                                          on_delete=models.CASCADE, blank=True, null=True)
-
-    titulo_interprete2 = models.CharField(blank=True, null=True, max_length=255)
-    selec_interprete2 = models.ForeignKey(Staff, related_name='personajes2',
-                                          on_delete=models.CASCADE, blank=True, null=True)
-
-    titulo_interprete3 = models.CharField(blank=True, null=True, max_length=255)
-    selec_interprete3 = models.ForeignKey(Staff, related_name='personajes3',
-                                          on_delete=models.CASCADE, blank=True, null=True)
 
     slug = models.SlugField(max_length=255, blank=True)
 

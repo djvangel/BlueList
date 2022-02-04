@@ -32,11 +32,6 @@ def personaje(request, slug_titulo, slug_personaje):
     return render(request, 'titulo/personaje.html', ctx)
 
 
-def staff(request, slug_staff):
-    staff = Personaje.objects.get(slug=slug_staff)
-    ctx = {"staff": staff}
-    return render(request, 'titulo/staff.html', ctx)
-
 
 def franquicia(request, slug_franquicia):
     franquicia = get_object_or_404(Franquicia, slug=slug_franquicia)
